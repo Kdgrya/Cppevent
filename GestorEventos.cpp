@@ -34,9 +34,36 @@ void GestorEventos::SolicitarDatos() {
     std::cin.ignore();
     std::getline(std::cin, name);
 
-    std::cout << "Ingrese el Dia: "; std::cin >> day;
-    std::cout << "Ingrese el Mes: "; std::cin >> month;
-    std::cout << "Ingrese el Año: "; std::cin >> year;
+
+    while (true) {
+        std::cout << "Ingrese el Dia: ";
+        if (std::cin >> day) {
+            break;
+        }
+        std::cout << "Error: Has ingresado un caracter No un numero.\n";
+        std::cin.clear();
+        std::cin.ignore(1000, '\n');
+    }
+
+    while (true) {
+        std::cout << "Ingrese el Mes: ";
+        if (std::cin >> month) {
+            break;
+        }
+        std::cout << "Error: Has ingresado un caracter No un numero.\n";
+        std::cin.clear();
+        std::cin.ignore(1000, '\n');
+    }
+
+    while (true) {
+        std::cout << "Ingrese el Ano: ";
+        if (std::cin >> year) {
+            break;
+        }
+        std::cout << "Error: Has ingresado un caracter No un numero.\n";
+        std::cin.clear();
+        std::cin.ignore(1000, '\n');
+    }
 
     auto nuevoEvento = std::make_unique<Create_Eventos>(name, day, month, year);
     Levents.push_back(std::move(nuevoEvento));
